@@ -32,3 +32,9 @@ jobs:
         run: |
           sudo sh aarch64-uefi-qcow2.sh
         shell: bash
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: arch-boxes-aarch64-efi
+          path: ArchLinuxARM-aarch64-latest.qcow2
