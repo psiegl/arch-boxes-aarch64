@@ -20,6 +20,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Assumption installed: modprobe (kmod), mkfs.ext4 (e2fsprogs), mount, curl, blkid (util-linux)
+      - name: Install package - qemu-img, qemu-nbd, parted, mkfs.vfat, bsdtar
+        run: sudo apt -y install qemu-utils parted dosfstools libarchive-tools
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
