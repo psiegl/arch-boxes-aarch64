@@ -27,14 +27,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
           sudo sh aarch64-uefi-qcow2.sh
+          sync
+          qemu-img convert -c -O qcow2 ArchLinuxARM-aarch64-latest.qcow2 ArchLinuxARM-aarch64-latest.c.qcow2
         shell: bash
 
-      - name: Upload artifact
+      - name: Upload artifact ArchLinuxARM-aarch64-latest.qcow
         uses: actions/upload-artifact@v2
         with:
-          name: arch-boxes-aarch64-efi
-          path: ArchLinuxARM-aarch64-latest.qcow2
+          name: ArchLinuxARM-aarch64-latest.qcow2
+          path: |
+            ArchLinuxARM-aarch64-latest.c.qcow2
